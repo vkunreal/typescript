@@ -1,0 +1,25 @@
+{
+  "name": "ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:dev": "rd -r public\\scripts 2>null & tsc -p tsconfig-dev.json",
+    "start": "http-server -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkunreal/typescript.git"
+  },
+  "author": "vkunreal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vkunreal/typescript/issues"
+  },
+  "homepage": "https://github.com/vkunreal/typescript#readme",
+  "devDependencies": {
+    "http-server": "^14.0.0",
+    "typescript": "^4.4.4"
+  }
+}
