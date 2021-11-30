@@ -1,23 +1,8 @@
 import { renderBlock } from "./lib.js";
 
-function dateToString(date: Date): string {
-  const year = date.getFullYear();
-  let month = String(date.getMonth() + 1);
-  let day = String(date.getDate());
-
-  if (Number(month) < 10) {
-    month = "0" + month;
-  }
-
-  if (Number(day) < 10) {
-    day = "0" + day;
-  }
-
-  return `${year}-${month}-${day}`;
-}
-
-function getLastDayOfMonth(year: number, month: number): Date {
-  return new Date(year, month + 1, 0);
+interface SearchFormData {
+  date1: string;
+  date2: string;
 }
 
 export function renderSearchFormBlock(date1: Date, date2: Date) {
@@ -46,13 +31,13 @@ export function renderSearchFormBlock(date1: Date, date2: Date) {
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value="${dateToString(
+            <input id="check-in-date" class="date1" type="date" value="${dateToString(
               date1
             )}" min="${min}" max="${max}" name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="${dateToString(
+            <input id="check-out-date" class="date2" type="date" value="${dateToString(
               date2
             )}" min="${min}" max="${max}" name="checkout" />
           </div>
@@ -61,11 +46,55 @@ export function renderSearchFormBlock(date1: Date, date2: Date) {
             <input id="max-price" type="text" value="" name="price" class="max-price" />
           </div>
           <div>
-            <div><button>Найти</button></div>
+            <div><button id="searchBtn">Найти</button></div>
           </div>
         </div>
       </fieldset>
     </form>
     `
   );
+
+  const btn = document.getElementById("searchBtn");
+
+  btn.addEventListener("click", (e: MouseEvent) => {
+    e.preventDefault();
+
+    const date1 = (<HTMLInputElement>(
+      document.getElementsByClassName("date1")[0]
+    )).value;
+    const date2 = (<HTMLInputElement>(
+      document.getElementsByClassName("date2")[0]
+    )).value;
+
+    const result: SearchFormData = {
+      date1,
+      date2,
+    };
+
+    search(result);
+  });
+}
+
+function dateToString(date: Date): string {
+  const year = date.getFullYear();
+  let month = String(date.getMonth() + 1);
+  let day = String(date.getDate());
+
+  if (Number(month) < 10) {
+    month = "0" + month;
+  }
+
+  if (Number(day) < 10) {
+    day = "0" + day;
+  }
+
+  return `${year}-${month}-${day}`;
+}
+
+function getLastDayOfMonth(year: number, month: number): Date {
+  return new Date(year, month + 1, 0);
+}
+
+function search(data: SearchFormData) {
+  console.log(data);
 }
