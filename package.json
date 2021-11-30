@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "build:dev": "rd -r public\\scripts 2>null & tsc -p tsconfig-dev.json",
+    "build:dev": "rd -r public\\scripts & tsc -p tsconfig-dev.json",
     "start": "http-server -p 3000"
   },
   "repository": {

@@ -5,9 +5,10 @@ export function renderUserBlock(
   avatar: string,
   favoriteItemsAmount: number
 ) {
-  const favoritesCaption =
-    favoriteItemsAmount >= 1 ? favoriteItemsAmount : "ничего нет";
-  const hasFavoriteItems = favoriteItemsAmount >= 1 ? " active" : "";
+  const favoritesCaption = favoriteItemsAmount
+    ? favoriteItemsAmount
+    : "ничего нет";
+  const hasFavoriteItems = favoriteItemsAmount ? " active" : "";
 
   renderBlock(
     "user-block",
