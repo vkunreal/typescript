@@ -10,7 +10,7 @@ interface IAction {
 
 export function renderBlock(elementId: string | null, html: string | null) {
   const element = document.getElementById(elementId);
-  element.insertAdjacentHTML("afterbegin", html);
+  element.innerHTML = html;
 }
 
 export function renderToast(message: IMessage | null, action: IAction | null) {

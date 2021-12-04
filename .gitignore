@@ -1,2 +1,4 @@
 node_modules
-public/scripts
+.vscode
+/dist
+/data/db.json
