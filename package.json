@@ -1,25 +1,22 @@
 {
-  "name": "ts",
+  "name": "geekbrains-typescript-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "House rent API",
   "scripts": {
     "build": "tsc",
-    "build:dev": "rd -r public\\scripts & tsc -p tsconfig-dev.json",
-    "start": "http-server -p 3000"
+    "restore-data": "cp ./data/db.backup.json ./data/db.json",
+    "start": "nodemon ./dist/index.js --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vkunreal/typescript.git"
+  "dependencies": {
+    "@feathersjs/express": "^4.5.11",
+    "@feathersjs/feathers": "^4.5.11",
+    "@feathersjs/transport-commons": "^4.5.11",
+    "joi": "^17.4.0"
   },
-  "author": "vkunreal",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vkunreal/typescript/issues"
-  },
-  "homepage": "https://github.com/vkunreal/typescript#readme",
   "devDependencies": {
-    "http-server": "^14.0.0",
-    "typescript": "^4.4.4"
+    "@types/node": "^15.12.2",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.2"
   }
 }
