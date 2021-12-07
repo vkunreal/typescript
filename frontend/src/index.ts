@@ -2,6 +2,9 @@ import { renderSearchFormBlock } from "./search-form.js";
 import { renderSearchStubBlock } from "./search-results.js";
 import { renderUserBlock } from "./user.js";
 import { renderToast } from "./lib.js";
+import { FlatRentSdk } from "./flat-rent-sdk.js";
+
+const sdk = new FlatRentSdk();
 
 window.addEventListener("DOMContentLoaded", () => {
   const defaultDateFrom = new Date();
@@ -44,10 +47,10 @@ interface IUserData {
   avatar: string;
 }
 
-function getUserData(): IUserData {
+const getUserData = (): IUserData => {
   return JSON.parse(localStorage.getItem("user"));
-}
+};
 
-function getFavoritesAmount(): string {
+const getFavoritesAmount = (): string => {
   return localStorage.getItem("favoritesAmount");
-}
+};

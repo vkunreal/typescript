@@ -4,7 +4,7 @@
   "description": "House rent API",
   "scripts": {
     "build": "tsc",
-    "restore-data": "cp ./data/db.backup.json ./data/db.json",
+    "restore-data": "copy ./data/db.backup.json ./data/db.json",
     "start": "nodemon ./dist/index.js --watch"
   },
   "dependencies": {
