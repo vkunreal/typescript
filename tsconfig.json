@@ -1,11 +1,18 @@
 {
-    "compilerOptions": {
-        "outDir": "public/scripts",
-        "target": "es2015",
-        "module": "es2015",
-        "moduleResolution": "node"
-    },
-    "files": [
-        "src/index.ts"
-    ]
+  "compilerOptions": {
+    "target": "esnext",           
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "watch": true,
+    "outDir": "./dist",
+    "resolveJsonModule": true
+  },
+  "files": [
+    "./src/index.ts"
+  ]
 }
