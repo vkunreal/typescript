@@ -2,13 +2,13 @@ import { renderBlock } from "./lib.js";
 import { renderUserBlock } from "./user.js";
 
 export interface IPlace {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  remoteness: number;
-  bookedDates: any[];
+  id: string;
+  title: string;
+  details: string;
+  totalPrice: number;
+  photos: string[];
+  bookedDates: number[];
+  coordinates: number[];
 }
 
 export function renderSearchStubBlock() {
@@ -46,15 +46,15 @@ export function renderSearchResultsBlock(places: IPlace[]) {
         <div class="result-container">
           <div class="result-img-container">
             <div class="favorites" id="favorites-${place.id}"></div>
-            <img class="result-img" src="${place.image}" alt="">
+            <img class="result-img" src="${place.photos[0]}" alt="">
           </div>	
           <div class="result-info">
             <div class="result-info--header">
-              <p>${place.name}</p>
-              <p class="price">${place.price}&#8381;</p>
+              <p>${place.title}</p>
+              <p class="price">${place.totalPrice}&#8381;</p>
             </div>
-            <div class="result-info--map"><i class="map-icon"></i> ${place.remoteness}км от вас</div>
-            <div class="result-info--descr">${place.description}</div>
+            <div class="result-info--map"><i class="map-icon"></i> 0км от вас</div>
+            <div class="result-info--descr">${place.details}</div>
             <div class="result-info--footer">
               <div>
                 <button>Забронировать</button>

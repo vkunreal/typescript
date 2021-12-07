@@ -5,8 +5,8 @@ declare module "flat-rent-sdk" {
     details: string;
     photos: string[];
     coordinates: number[];
-    booked: any[];
-    price: number;
+    bookedDates: number[];
+    totalPrice: number;
   }
 
   interface IParams {

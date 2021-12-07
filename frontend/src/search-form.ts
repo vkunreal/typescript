@@ -1,10 +1,13 @@
 import { renderBlock } from "./lib.js";
-import { renderSearchResultsBlock, IPlace } from "./search-results.js";
+import { renderSearchResultsBlock } from "./search-results.js";
+import { FlatRentSdk } from "./flat-rent-sdk.js";
 
 interface SearchFormData {
   date1: string;
   date2: string;
 }
+
+const sdk = new FlatRentSdk();
 
 export function renderSearchFormBlock(date1: Date, date2: Date) {
   const date = new Date();
@@ -73,10 +76,15 @@ export function renderSearchFormBlock(date1: Date, date2: Date) {
     };
 
     search(result);
-    const data = getPlaces();
-    data.then((data) => {
-      renderSearchResultsBlock(data);
-    });
+    sdk
+      .search({
+        city: "Санкт-Петербург",
+        checkInDate: new Date(date1),
+        checkOutDate: new Date(date2),
+      })
+      .then((data) => {
+        renderSearchResultsBlock(data);
+      });
   });
 }
 
@@ -102,16 +110,4 @@ function getLastDayOfMonth(year: number, month: number): Date {
 
 function search(data: SearchFormData) {
   console.log(data);
-}
-
-async function getPlaces() {
-  let places: IPlace[] = [];
-
-  for (let i = 1; i < 5; i++) {
-    await fetch(`http://localhost:3030/places/${i}`)
-      .then((res) => res.json())
-      .then((place) => places.push(place));
-  }
-
-  return places;
 }
